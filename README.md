@@ -56,7 +56,7 @@ npx tsx src/index.ts add-result PROJ 456 --case-id 42 --status passed
 ### テストスイート作成
 
 ```bash
-npx tsx src/index.ts create-suite PROJ --title "お知らせ管理機能"
+npx tsx src/index.ts create-suite PROJ --title "通知管理機能"
 npx tsx src/index.ts create-suite PROJ --title "子スイート" --parent-id 10
 npx tsx src/index.ts create-suite PROJ --title "説明付き" --description "スイートの説明"
 ```
@@ -64,8 +64,8 @@ npx tsx src/index.ts create-suite PROJ --title "説明付き" --description "ス
 ### テストケース作成
 
 ```bash
-npx tsx src/index.ts create-case PROJ --title "新規作成ボタン表示確認"
-npx tsx src/index.ts create-case PROJ --title "新規作成ボタン表示確認" --suite-id 10
+npx tsx src/index.ts create-case PROJ --title "通知表示"
+npx tsx src/index.ts create-case PROJ --title "通知表示" --suite-id 10
 npx tsx src/index.ts create-case PROJ --title "ケース" --suite-id 10 --description "ケースの説明"
 ```
 
