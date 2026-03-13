@@ -4,23 +4,24 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-Qase API クライアント — a TypeScript CLI tool that wraps the Qase REST API v1 for managing test suites, cases, runs, and results. It also supports bulk-importing Gherkin `.feature` files into Qase.
-
-## Commands
-
-- **Run**: `npm start` (alias for `tsx src/index.ts`)
-- **Run directly**: `npx tsx src/index.ts <command> <project-code> [options]`
-- No test or lint scripts are configured.
+A wrapper CLI for Qase REST API v1. Provides test management (suite/case/run/result) and bulk import of Gherkin `.feature` files.
 
 ## Architecture
 
-- **Entry point**: `src/index.ts` — CLI argument parser that dispatches to command handlers via a switch statement. Uses a manual `parseFlag()` helper (no CLI framework).
-- **API client**: `src/qase-client.ts` — thin HTTP wrapper (`QaseClient` class) around `fetch` for Qase API v1 (`https://api.qase.io/v1`). Auth via `QASE_API_TOKEN` from `.env`.
-- **Commands**: `src/commands/` — one file per command (`get-suites`, `get-cases`, `get-case`, `create-run`, `add-result`, `create-suite`, `create-case`, `import-gherkin`). Each exports a single async function.
-- **Gherkin import** (`import-gherkin.ts`): parses `.feature` files manually (no external parser), maps Feature → suite, Scenario → case, Scenario Outline + Examples → expanded cases with variable substitution.
+- Three-layer structure: CLI → Command → API
+- One command = one file
+- API client is a thin HTTP wrapper
+- Gherkin parser uses no external libraries
 
-## Key Details
+## Conventions
 
-- ESM project (`"type": "module"`) — imports use `.js` extensions even for `.ts` source files.
-- Runtime: Node.js with `tsx` for direct TypeScript execution (no build step needed).
-- API token must be set in `.env` as `QASE_API_TOKEN`.
+- ESM project (`.js` extension required in imports)
+- Direct execution via `tsx` (no build step)
+- Environment variable: `QASE_API_TOKEN` in `.env`
+- No CLI framework (manual argument parsing)
+
+## Language
+
+- Thinking/reasoning: English
+- Chat responses: Japanese
+- Files, code, documentation: English
